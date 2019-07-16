@@ -1,0 +1,10 @@
+#statusLabel {
+    -fx-text-alignment: left;
+    -fx-wrap-text: false;
+    -fx-text-overrun: ellipsis;
+    -fx-content-display: center;
+}
+
+#statusStackPane {
+    -fx-alignment: center-left;
+}

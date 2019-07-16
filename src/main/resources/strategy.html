@@ -1,0 +1,503 @@
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row nowrap;
+        }
+
+        #legend {
+            width: 13em;
+            margin: 1em;
+            table-width: fixed;
+        }
+
+        #legend tr td:first-child,
+        #legend tr th:first-child {
+            width: 10px;
+        }
+
+        caption {
+            font-weight: bold;
+            font-size: 1.25em;
+            padding-bottom: .25em;
+        }
+
+        table {
+            border: 1px solid black;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #ccc;
+        }
+
+        th {
+            border-bottom: 1px solid black;
+        }
+
+        td {
+            width: 20px;
+            text-align: center;
+        }
+
+        td.H {
+            background-color: green;
+            color: white;
+        }
+
+        td.D {
+            background-color: blue;
+            color: white;
+        }
+
+        td.S {
+            background-color: red;
+            color: white;
+        }
+
+        td.P {
+            background-color: yellow;
+        }
+
+        td.DS {
+            background-color: purple;
+            color: white;
+        }
+
+        td.RH {
+            background-color: orange;
+            color: white;
+        }
+
+        td.RS {
+            background-color: aqua;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<table id="strategy">
+    <caption>Blackjack Player Strategy</caption>
+    <thead>
+    <tr>
+        <th rowspan="2">Player Score</th>
+        <th colspan="10">Dealer Upcard</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>2</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>T</td>
+        <td>A</td>
+    </tr>
+    <tr>
+        <td>5-8</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td class="H">H</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="RH">RH</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="RH">RH</td>
+        <td class="RS">RS</td>
+        <td class="RH">RH</td>
+    </tr>
+    <tr>
+        <td>17+</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+    </tr>
+    <tr>
+        <td>A2</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>A3</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>A4</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>A5</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>A6</td>
+        <td class="H">H</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>A7</td>
+        <td class="S">S</td>
+        <td class="DS">DS</td>
+        <td class="DS">DS</td>
+        <td class="DS">DS</td>
+        <td class="DS">DS</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>A8</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+    </tr>
+    <tr>
+        <td>A9</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>33</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>44</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>55</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="D">D</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>66</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>77</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+        <td class="H">H</td>
+    </tr>
+    <tr>
+        <td>88</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+    </tr>
+    <tr>
+        <td>99</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="S">S</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+    </tr>
+    <tr>
+        <td>TT</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+        <td class="S">S</td>
+    </tr>
+    <tr>
+        <td>AA</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+        <td class="P">P</td>
+    </tr>
+    </tbody>
+</table>
+<table id="legend">
+    <caption>Legend</caption>
+    <tr>
+        <th>Code</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td class="H">H</td>
+        <td>Hit</td>
+    </tr>
+    <tr>
+        <td class="S">S</td>
+        <td>Stand</td>
+    </tr>
+    <tr>
+        <td class="D">D</td>
+        <td>Double Down or Hit</td>
+    </tr>
+    <tr>
+        <td class="DS">DS</td>
+        <td>Double Down or Stand</td>
+    </tr>
+    <tr>
+        <td class="P">P</td>
+        <td>Split</td>
+    </tr>
+    <tr>
+        <td class="RH">RH</td>
+        <td>Surrender or Hit</td>
+    </tr>
+    <tr>
+        <td class="RS">RS</td>
+        <td>Surrender or Stand</td>
+    </tr>
+</table>
+</body>
+</html>

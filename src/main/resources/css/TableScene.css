@@ -1,0 +1,65 @@
+HBox {
+    -fx-alignment: center;
+}
+
+Label {
+    -fx-alignment: center;
+    -fx-wrap-text: false;
+}
+
+#tableAnchorPane {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 65%, #349831, #177114);
+    -fx-min-height: 500px;
+    -fx-pref-height: 500px;
+    -fx-max-height: 500px;
+    -fx-min-width: 700px;
+    -fx-pref-width: 700px;
+    -fx-max-width: 700px;
+}
+
+#buttonsHBox {
+    -fx-spacing: 15px;
+}
+
+#buttonsHBox Button {
+    -fx-min-height: 25px;
+    -fx-pref-height: 25px;
+    -fx-max-height: 25px;
+    -fx-min-width: 70px;
+    -fx-pref-width: 70px;
+    -fx-max-width: 70px;
+}
+
+#dealerHandLabel, #playerHandLabel {
+    -fx-font-weight: bold;
+    -fx-font-size: 12pt;
+}
+
+#dealerHandHBox, #playerHandHBox {
+    -fx-spacing: 10px;
+    -fx-min-height: 125px;
+    -fx-pref-height: 125px;
+    -fx-max-height: 125px;
+    -fx-min-width: 575px;
+    -fx-pref-width: 575px;
+    -fx-max-width: 575px;
+}
+
+#playerScore {
+    -fx-font-size: 18pt;
+    -fx-font-weight: bold;
+}
+
+.score {
+    -fx-font-size: 22pt;
+    -fx-font-weight: bold;
+    -fx-fill: black;
+    -fx-alignment: center;
+}
+
+#handResultLabel {
+    -fx-font-size: 40pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: limegreen;
+    -fx-alignment: center;
+}
