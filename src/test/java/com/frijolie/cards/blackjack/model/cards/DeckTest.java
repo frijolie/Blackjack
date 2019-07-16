@@ -18,7 +18,9 @@ class DeckTest {
   @BeforeEach
   void setUp() {
     deck = new Deck();
-    cardFrequency = deck.getCards().stream().collect(Collectors.groupingBy(Card::toString, Collectors.counting()));
+    cardFrequency =
+        deck.getCards().stream()
+            .collect(Collectors.groupingBy(Card::toString, Collectors.counting()));
   }
 
   @AfterEach
@@ -40,13 +42,17 @@ class DeckTest {
 
   @Test
   void fullDeckShouldContain52Cards() {
-    String message = String.format("A full deck should contain 52 cards. instead it has: %s", deck.getCards().size());
+    String message =
+        String.format(
+            "A full deck should contain 52 cards. instead it has: %s", deck.getCards().size());
     assertEquals(52, deck.getCards().size(), message);
   }
 
   @Test
   void deckShouldContain4OfEveryRank() {
-    assertAll("There should be 4 of every Rank", () -> assertEquals(4, numberOfRanks(Rank.ACE), "There are not 4 Aces"),
+    assertAll(
+        "There should be 4 of every Rank",
+        () -> assertEquals(4, numberOfRanks(Rank.ACE), "There are not 4 Aces"),
         () -> assertEquals(4, numberOfRanks(Rank.TWO), "There are not 4 Twos"),
         () -> assertEquals(4, numberOfRanks(Rank.THREE), "There are not 4 Threes"),
         () -> assertEquals(4, numberOfRanks(Rank.FOUR), "There are not 4 Fours"),
@@ -63,7 +69,8 @@ class DeckTest {
 
   @Test
   void deckShouldContain13CardsForEverySuit() {
-    assertAll("There should be 13 cards for every Suit",
+    assertAll(
+        "There should be 13 cards for every Suit",
         () -> assertEquals(13, numberOfSuits(Suit.HEARTS), "There are not 13 Hearts"),
         () -> assertEquals(13, numberOfSuits(Suit.CLUBS), "There are not 13 Clubs"),
         () -> assertEquals(13, numberOfSuits(Suit.DIAMONDS), "There are not 13 Diamonds"),
@@ -72,7 +79,8 @@ class DeckTest {
 
   @Test
   void deckShouldContainEveryRankInHearts() {
-    assertAll("There should be every Rank in Hearts",
+    assertAll(
+        "There should be every Rank in Hearts",
         () -> assertEquals(1, getFrequency("AH"), "There should only be 1 Ace of Hearts"),
         () -> assertEquals(1, getFrequency("2H"), "There should only be 1 Two of Hearts"),
         () -> assertEquals(1, getFrequency("3H"), "There should only be 1 Three of Hearts"),
@@ -90,7 +98,8 @@ class DeckTest {
 
   @Test
   void deckShouldContainEveryRankInClubs() {
-    assertAll("There should be every Rank in Clubs",
+    assertAll(
+        "There should be every Rank in Clubs",
         () -> assertEquals(1, getFrequency("AC"), "There should only be 1 Ace of Clubs"),
         () -> assertEquals(1, getFrequency("2C"), "There should only be 1 Two of Clubs"),
         () -> assertEquals(1, getFrequency("3C"), "There should only be 1 Three of Clubs"),
@@ -108,7 +117,8 @@ class DeckTest {
 
   @Test
   void deckShouldContainEveryRankInDiamonds() {
-    assertAll("There should be every Rank in Diamonds",
+    assertAll(
+        "There should be every Rank in Diamonds",
         () -> assertEquals(1, getFrequency("AD"), "There should only be 1 Ace of Diamonds"),
         () -> assertEquals(1, getFrequency("2D"), "There should only be 1 Two of Diamonds"),
         () -> assertEquals(1, getFrequency("3D"), "There should only be 1 Three of Diamonds"),
@@ -126,7 +136,8 @@ class DeckTest {
 
   @Test
   void deckShouldContainEveryRankInSpades() {
-    assertAll("There should be every Rank in Spades",
+    assertAll(
+        "There should be every Rank in Spades",
         () -> assertEquals(1, getFrequency("AS"), "There should only be 1 Ace of Spades"),
         () -> assertEquals(1, getFrequency("2S"), "There should only be 1 Two of Spades"),
         () -> assertEquals(1, getFrequency("3S"), "There should only be 1 Three of Spades"),

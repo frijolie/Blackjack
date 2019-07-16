@@ -6,6 +6,7 @@ public class CommandInvoker {
 
   /**
    * Executes the command on the receiver.
+   *
    * @param command to be executed
    */
   public void execute(Command command) {

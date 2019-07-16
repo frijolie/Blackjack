@@ -77,12 +77,9 @@ public class TableController {
 
   private AnchorPane anchorPane;
 
-  /**
-   * No-arg constructor. Assembles an FXML file into a usable JavaFX component.
-   */
+  /** No-arg constructor. Assembles an FXML file into a usable JavaFX component. */
   public TableController() {
-    FXMLLoader loader =
-        new FXMLLoader(getClass().getResource("/fxml/TableScene.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TableScene.fxml"));
     loader.setController(this);
     try {
       anchorPane = loader.load();
@@ -101,7 +98,7 @@ public class TableController {
   public void injectModel(final BlackjackGame game, final StatusBarController statusController) {
     this.game = game;
     this.statusBarController = statusController;
-    player = game.getPlayer();
+    player = (BlackjackPlayer) game.getPlayer();
     dealerHand = game.getDealer().getHand();
     playerCards = game.getPlayer().getHand().getCards();
     playerHand = player.getHand();
@@ -140,10 +137,7 @@ public class TableController {
     dealerHandHBox.getChildren().add(dealerScore);
   }
 
-  /**
-   * Clears the nodes in the dealer hand and displays one card face down and
-   * the rest face up.
-   */
+  /** Clears the nodes in the dealer hand and displays one card face down and the rest face up. */
   private void paintDealerHandFaceDown() {
     dealerHandHBox.getChildren().clear();
     dealerHandHBox.getChildren().addAll(getCardBack(), getCardFace(dealerCards.get(1)));
@@ -305,31 +299,35 @@ public class TableController {
               }
             });
 
-    playerCards.addListener((ListChangeListener<? super Card>) c -> {
-      while (c.next()) {
-        if (c.wasAdded() || c.wasRemoved()) {
-          paintPlayerHand();
-        }
-      }
-    });
+    playerCards.addListener(
+        (ListChangeListener<? super Card>)
+            c -> {
+              while (c.next()) {
+                if (c.wasAdded() || c.wasRemoved()) {
+                  paintPlayerHand();
+                }
+              }
+            });
   }
 
   private void configureDealerListeners() {
-    dealerCards.addListener((ListChangeListener<? super Card>) c -> {
-      while (c.next()) {
-        if (c.wasAdded()) {
-          paintDealerHandFaceUp();
-        } else if (c.wasRemoved()) {
-          displayInitialHand();
-          dealerScore.setText("");
-        }
-      }
-    });
+    dealerCards.addListener(
+        (ListChangeListener<? super Card>)
+            c -> {
+              while (c.next()) {
+                if (c.wasAdded()) {
+                  paintDealerHandFaceUp();
+                } else if (c.wasRemoved()) {
+                  displayInitialHand();
+                  dealerScore.setText("");
+                }
+              }
+            });
   }
 
   private void configureGameListeners() {
     BlackjackGame game = (BlackjackGame) this.game;
-    game.gameOverProperty()
+    game.gameIsOverProperty()
         .addListener(
             (observable, oldValue, gameOver) -> {
               if (gameOver) {

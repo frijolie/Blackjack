@@ -33,10 +33,10 @@ class HandTest {
     playerHand.addCard(CardRandomizer.getCard(Rank.ACE));
 
     /*
-      Dealer score = 4 (2 + 2)
-      Player score = 21 (10 + 11)
-      4 - 21 = -17
-     */
+     Dealer score = 4 (2 + 2)
+     Player score = 21 (10 + 11)
+     4 - 21 = -17
+    */
     assertEquals(-17, dealerHand.compareTo(playerHand));
   }
 
@@ -48,10 +48,10 @@ class HandTest {
     playerHand.addCard(CardRandomizer.getCard(Rank.ACE));
 
     /*
-      Dealer score = 4 (2 + 2)
-      Player score = 21 (10 + 11)
-      21 - 4 = 17
-     */
+     Dealer score = 4 (2 + 2)
+     Player score = 21 (10 + 11)
+     21 - 4 = 17
+    */
     assertEquals(17, playerHand.compareTo(dealerHand));
   }
 
@@ -63,10 +63,10 @@ class HandTest {
     dealerHand.addCard(CardRandomizer.getCard(Rank.THREE));
 
     /*
-      Dealer score = 14 (11 + 3)
-      Player score = 14 (5 + 9)
-      14 - 14 = 0
-     */
+     Dealer score = 14 (11 + 3)
+     Player score = 14 (5 + 9)
+     14 - 14 = 0
+    */
     assertEquals(0, playerHand.compareTo(dealerHand));
   }
 }

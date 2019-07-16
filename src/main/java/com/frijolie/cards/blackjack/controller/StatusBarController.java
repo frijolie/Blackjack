@@ -13,12 +13,9 @@ public class StatusBarController {
 
   private StackPane stackPane;
 
-  /**
-   * No-arg constructor. Assembles an FXML file into a usable JavaFX component.
-   */
+  /** No-arg constructor. Assembles an FXML file into a usable JavaFX component. */
   public StatusBarController() {
-    FXMLLoader loader =
-        new FXMLLoader(getClass().getResource("/fxml/StatusBar.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StatusBar.fxml"));
     loader.setController(this);
     try {
       stackPane = loader.load();
@@ -31,6 +28,7 @@ public class StatusBarController {
 
   /**
    * Sets the text in the statusbar to the provided message.
+   *
    * @param message to be displayed in the statusbar
    */
   final void setStatusText(String message) {
@@ -39,6 +37,7 @@ public class StatusBarController {
 
   /**
    * Returns a StackPane to be displayed in the GUI.
+   *
    * @return a StackPane component
    */
   public final StackPane getStatusBar() {

@@ -41,7 +41,7 @@ class CardTest {
 
   @Test
   void sameRank_SendingNullCardShouldThrowNPE() {
-    assertThrows(NullPointerException.class, ()-> tenOfDiamonds.sameRank(null));
+    assertThrows(NullPointerException.class, () -> tenOfDiamonds.sameRank(null));
   }
 
   @Test
@@ -56,22 +56,22 @@ class CardTest {
 
   @Test
   void sameValue_SendingNullCardShouldThrowNPE() {
-    assertThrows(NullPointerException.class, ()-> tenOfDiamonds.sameValue(null));
+    assertThrows(NullPointerException.class, () -> tenOfDiamonds.sameValue(null));
   }
 
   @Test
   void compareTo_TenOfHeartsComparedToTenOfDiamondsShouldReturn() {
     /*
-      Ranks are equal.
-      Hearts ordinal = 4.
-      Diamonds ordinal = 2.
-      4 - 2 = 2
-     */
+     Ranks are equal.
+     Hearts ordinal = 4.
+     Diamonds ordinal = 2.
+     4 - 2 = 2
+    */
     assertEquals(2, tenOfHearts.compareTo(tenOfDiamonds));
   }
 
   @Test
   void compareTo_SendingNullCardShouldThrowNPE() {
-    assertThrows(NullPointerException.class, ()-> tenOfDiamonds.compareTo(null));
+    assertThrows(NullPointerException.class, () -> tenOfDiamonds.compareTo(null));
   }
 }

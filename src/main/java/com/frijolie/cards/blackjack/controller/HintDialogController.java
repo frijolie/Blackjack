@@ -4,8 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class HintDialogController {
-  @FXML
-  Label hintLabel;
+  @FXML Label hintLabel;
 
   void setText(String message) {
     hintLabel.setText(message);

@@ -27,13 +27,9 @@ public class MenuBarController {
 
   private MenuBar menuBar;
 
-  /**
-   * No-arg constructor. Assembles an FXML file into a usable JavaFX component.
-   */
+  /** No-arg constructor. Assembles an FXML file into a usable JavaFX component. */
   public MenuBarController() {
-    FXMLLoader loader =
-        new FXMLLoader(getClass()
-            .getResource("/fxml/MainMenu.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainMenu.fxml"));
     loader.setController(this);
     try {
       menuBar = loader.load();
@@ -42,9 +38,7 @@ public class MenuBarController {
     }
   }
 
-  /**
-   * Configures things after the FXML has been loaded.
-   */
+  /** Configures things after the FXML has been loaded. */
   @FXML
   public void initialize() {
     setMenuItemIcons();
@@ -54,6 +48,7 @@ public class MenuBarController {
 
   /**
    * Returns a MenuBar to be used in the GUI.
+   *
    * @return a MenuBar component
    */
   public final MenuBar getMenuBar() {
@@ -65,9 +60,7 @@ public class MenuBarController {
    *
    * @param game the model class
    */
-  public void injectModel(final BlackjackGame game) {
-
-  }
+  public void injectModel(final BlackjackGame game) {}
 
   private void setMenuEventHandlers() {
     quitMenuItem.setOnAction(e -> Platform.exit());
