@@ -8,44 +8,36 @@
 <MenuBar xmlns:fx="http://javafx.com/fxml/1" fx:id="mainMenuBar" nodeOrientation="LEFT_TO_RIGHT"
          stylesheets="@../css/MainMenu.css" StackPane.alignment="TOP_CENTER"
          xmlns="http://javafx.com/javafx/8.0.172-ea">
-    <menus>
-        <Menu fx:id="fileMenu" text="_File">
-            <items>
-                <MenuItem fx:id="newGameMenuItem" text="_New Game">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP"
-                                            shortcut="UP"/>
-                    </accelerator>
-                </MenuItem>
-                <MenuItem fx:id="quitMenuItem" text="_Quit">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
-                                            shortcut="UP"/>
-                    </accelerator>
-                </MenuItem>
-            </items>
-        </Menu>
-        <Menu fx:id="editMenu" text="_Edit">
-            <items>
-                <MenuItem fx:id="preferencesMenuItem" text="_Preferences">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP"
-                                            shortcut="UP"/>
-                    </accelerator>
-                </MenuItem>
-            </items>
-        </Menu>
-        <Menu fx:id="helpMenu" text="_Help">
-            <items>
-                <MenuItem fx:id="rulesMenuItem" text="_Rules"/>
-                <MenuItem fx:id="hintMenuItem" text="_Hint">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP"
-                                            shortcut="UP"/>
-                    </accelerator>
-                </MenuItem>
-                <MenuItem fx:id="aboutMenuItem" text="_About"/>
-            </items>
-        </Menu>
-    </menus>
+    <Menu fx:id="fileMenu" text="_File">
+        <MenuItem fx:id="newGameMenuItem" text="_New Game">
+            <accelerator>
+                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP"
+                                    shortcut="UP"/>
+            </accelerator>
+        </MenuItem>
+        <MenuItem fx:id="quitMenuItem" text="_Quit">
+            <accelerator>
+                <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
+                                    shortcut="UP"/>
+            </accelerator>
+        </MenuItem>
+    </Menu>
+    <Menu fx:id="editMenu" text="_Edit">
+        <MenuItem fx:id="preferencesMenuItem" text="_Preferences">
+            <accelerator>
+                <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP"
+                                    shortcut="UP"/>
+            </accelerator>
+        </MenuItem>
+    </Menu>
+    <Menu fx:id="helpMenu" text="_Help">
+        <MenuItem fx:id="rulesMenuItem" text="_Rules"/>
+        <MenuItem fx:id="hintMenuItem" text="_Hint">
+            <accelerator>
+                <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP"
+                                    shortcut="UP"/>
+            </accelerator>
+        </MenuItem>
+        <MenuItem fx:id="aboutMenuItem" text="_About"/>
+    </Menu>
 </MenuBar>

@@ -1,30 +1,32 @@
 package com.frijolie.cards.blackjack.controller;
 
-import com.frijolie.cards.blackjack.model.game.BlackjackGame;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
-public class StatusBarController {
+class StatusBarController {
 
-  @FXML private Label statusLabel;
+  @FXML
+  private Label statusLabel;
 
   private StackPane stackPane;
+  private SuperController superController;
 
-  /** No-arg constructor. Assembles an FXML file into a usable JavaFX component. */
-  public StatusBarController() {
+  /**
+   * No-arg constructor. Assembles an FXML file into a usable JavaFX component.
+   */
+  StatusBarController(SuperController superController) {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StatusBar.fxml"));
+    this.superController = superController;
     loader.setController(this);
     try {
       stackPane = loader.load();
     } catch (Exception e) {
       System.err.println("StatusBar.fxml could not be loaded");
+      e.printStackTrace();
     }
   }
-
-  public void injectModel(final BlackjackGame game) {}
 
   /**
    * Sets the text in the statusbar to the provided message.
@@ -40,7 +42,7 @@ public class StatusBarController {
    *
    * @return a StackPane component
    */
-  public final StackPane getStatusBar() {
+  final StackPane getStatusBar() {
     return stackPane;
   }
 }

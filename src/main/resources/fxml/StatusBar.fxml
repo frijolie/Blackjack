@@ -5,7 +5,5 @@
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="statusStackPane"
            stylesheets="@../css/StatusLabel.css"
            xmlns="http://javafx.com/javafx/8.0.172-ea">
-    <children>
-        <Label fx:id="statusLabel"/>
-    </children>
+    <Label fx:id="statusLabel"/>
 </StackPane>

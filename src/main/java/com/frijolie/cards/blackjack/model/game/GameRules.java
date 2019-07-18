@@ -31,7 +31,9 @@ public abstract class GameRules {
    */
   public static final int MAX_NUMBER_OF_DECKS = 8;
 
-  /** The highest score a hand can have without a BUST. */
+  /**
+   * The highest score a hand can have without a BUST.
+   */
   public static final int MAX_SCORE = 21;
 
   /**

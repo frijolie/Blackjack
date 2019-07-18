@@ -25,27 +25,35 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-public class TableController {
+class CardTableController {
 
-  @FXML private HBox dealerHandHBox;
+  @FXML
+  private HBox dealerHandHBox;
 
-  @FXML private HBox playerHandHBox;
+  @FXML
+  private HBox playerHandHBox;
 
-  @FXML private Button standButton;
+  @FXML
+  private Button standButton;
 
-  @FXML private Button doubleButton;
+  @FXML
+  private Button doubleButton;
 
-  @FXML private Button splitButton;
+  @FXML
+  private Button splitButton;
 
-  @FXML private Button hitButton;
+  @FXML
+  private Button hitButton;
 
-  @FXML private Button surrenderButton;
+  @FXML
+  private Button surrenderButton;
 
-  @FXML private Label handResultLabel;
+  @FXML
+  private Label handResultLabel;
 
   private Game game;
 
-  private StatusBarController statusBarController;
+  private SuperController superController;
 
   private ObservableList<Card> playerCards;
 
@@ -77,27 +85,22 @@ public class TableController {
 
   private AnchorPane anchorPane;
 
-  /** No-arg constructor. Assembles an FXML file into a usable JavaFX component. */
-  public TableController() {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TableScene.fxml"));
+  /**
+   * No-arg constructor. Assembles an FXML file into a usable JavaFX component.
+   */
+  CardTableController(SuperController superController) {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CardTable.fxml"));
+    this.superController = superController;
     loader.setController(this);
+
     try {
       anchorPane = loader.load();
     } catch (Exception e) {
-      System.err.println("TableScene.fxml could not be loaded");
+      System.err.println("CardTable.fxml could not be loaded");
       e.printStackTrace();
     }
-  }
 
-  /**
-   * Injects the object references into the class for future reference.
-   *
-   * @param game a reference to the BlackjackGame object
-   * @param statusController a reference to the statusController object
-   */
-  public void injectModel(final BlackjackGame game, final StatusBarController statusController) {
-    this.game = game;
-    this.statusBarController = statusController;
+    game = superController.getGame();
     player = (BlackjackPlayer) game.getPlayer();
     dealerHand = game.getDealer().getHand();
     playerCards = game.getPlayer().getHand().getCards();
@@ -108,6 +111,7 @@ public class TableController {
     dealerScore = new Text();
     dealerScore.getStyleClass().add("score");
     dealerCards = dealerHand.getCards();
+
     configureBindings();
     configureListeners();
     configureCommands();
@@ -137,7 +141,9 @@ public class TableController {
     dealerHandHBox.getChildren().add(dealerScore);
   }
 
-  /** Clears the nodes in the dealer hand and displays one card face down and the rest face up. */
+  /**
+   * Clears the nodes in the dealer hand and displays one card face down and the rest face up.
+   */
   private void paintDealerHandFaceDown() {
     dealerHandHBox.getChildren().clear();
     dealerHandHBox.getChildren().addAll(getCardBack(), getCardFace(dealerCards.get(1)));
@@ -150,9 +156,7 @@ public class TableController {
    */
   private void paintPlayerHand() {
     playerHandHBox.getChildren().clear();
-    for (Card card : playerCards) {
-      playerHandHBox.getChildren().add(getCardFace(card));
-    }
+    playerCards.forEach(card -> playerHandHBox.getChildren().add(getCardFace(card)));
     playerHandHBox.getChildren().add(playerScore);
   }
 
@@ -261,10 +265,12 @@ public class TableController {
    * @param msg to be displayed on the GUI
    */
   private void setStatusText(String msg) {
-    statusBarController.setStatusText(msg);
+    superController.setStatusText(msg);
   }
 
-  /** Fires the respective methods when a button is clicked. */
+  /**
+   * Fires the respective methods when a button is clicked.
+   */
   private void configureCommands() {
     hit = player::hit;
     doubleDown = player::doubleDown;
@@ -300,29 +306,27 @@ public class TableController {
             });
 
     playerCards.addListener(
-        (ListChangeListener<? super Card>)
-            c -> {
-              while (c.next()) {
-                if (c.wasAdded() || c.wasRemoved()) {
-                  paintPlayerHand();
-                }
+        (ListChangeListener<? super Card>) c -> {
+            while (c.next()) {
+              if (c.wasAdded() || c.wasRemoved()) {
+                paintPlayerHand();
               }
-            });
+            }
+        });
   }
 
   private void configureDealerListeners() {
     dealerCards.addListener(
-        (ListChangeListener<? super Card>)
-            c -> {
-              while (c.next()) {
-                if (c.wasAdded()) {
-                  paintDealerHandFaceUp();
-                } else if (c.wasRemoved()) {
-                  displayInitialHand();
-                  dealerScore.setText("");
-                }
+        (ListChangeListener<? super Card>) c -> {
+            while (c.next()) {
+              if (c.wasAdded()) {
+                paintDealerHandFaceUp();
+              } else if (c.wasRemoved()) {
+                displayInitialHand();
+                dealerScore.setText("");
               }
-            });
+            }
+        });
   }
 
   private void configureGameListeners() {

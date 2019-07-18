@@ -52,8 +52,8 @@ class BlackjackGameTest {
   @Test
   void dealInitialCards_bothPlayersShouldHaveTwoCards() {
     assertAll(
-        "After initial deal, both players should have two cards",
-        () -> assertEquals(2, game.getPlayer().getHand().getCards().size()),
-        () -> assertEquals(2, game.getDealer().getHand().getCards().size()));
+      "After initial deal, both players should have two cards",
+      () -> assertEquals(2, game.getPlayer().getHand().getCards().size()),
+      () -> assertEquals(2, game.getDealer().getHand().getCards().size()));
   }
 }

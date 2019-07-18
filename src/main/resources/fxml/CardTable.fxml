@@ -5,25 +5,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="tableAnchorPane"
-            stylesheets="@../css/TableScene.css" xmlns="http://javafx.com/javafx/8.0.172-ea">
-    <children>
-        <HBox fx:id="dealerHandHBox" layoutX="133.0" layoutY="35.0" styleClass="hand"
+            stylesheets="@../css/CardTable.css" xmlns="http://javafx.com/javafx/8.0.172-ea">
+        <HBox fx:id="dealerHandHBox" layoutX="133.0" layoutY="35.0"
               AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
               AnchorPane.topAnchor="15.0"/>
-        <HBox fx:id="playerHandHBox" layoutX="118.0" layoutY="317.0" styleClass="hand"
+        <HBox fx:id="playerHandHBox" layoutX="118.0" layoutY="317.0"
               AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="15.0"
               AnchorPane.rightAnchor="15.0"/>
         <HBox fx:id="buttonsHBox" layoutX="15.0" layoutY="422.0" maxHeight="-Infinity"
               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
               prefWidth="575.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0"
               AnchorPane.rightAnchor="15.0">
-            <children>
                 <Button fx:id="standButton" mnemonicParsing="false" text="Stand"/>
                 <Button fx:id="doubleButton" mnemonicParsing="false" text="Double"/>
                 <Button fx:id="splitButton" mnemonicParsing="false" text="Split"/>
                 <Button fx:id="hitButton" mnemonicParsing="false" text="Hit"/>
                 <Button fx:id="surrenderButton" mnemonicParsing="false" text="Surrender"/>
-            </children>
         </HBox>
         <Label fx:id="dealerHandLabel" layoutX="334.0" layoutY="152.0" text="Dealer Hand"
                AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
@@ -33,5 +30,4 @@
                AnchorPane.rightAnchor="15.0"/>
         <Label fx:id="handResultLabel" layoutX="15.0" layoutY="191.0" AnchorPane.leftAnchor="15.0"
                AnchorPane.rightAnchor="15.0"/>
-    </children>
 </AnchorPane>

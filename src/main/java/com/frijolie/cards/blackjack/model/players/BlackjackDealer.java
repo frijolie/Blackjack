@@ -15,7 +15,9 @@ public class BlackjackDealer implements Player {
   private BooleanProperty isActive;
   private Game game;
 
-  /** Default no-arg constructor. */
+  /**
+   * Default no-arg constructor.
+   */
   public BlackjackDealer() {
     hand = new BlackjackHand();
     isActive = new SimpleBooleanProperty(true);
@@ -43,7 +45,8 @@ public class BlackjackDealer implements Player {
   }
 
   /**
-   * Returns the BooleanProperty of isActive
+   * Returns the BooleanProperty of isActive.
+   *
    * @return a BooleanProperty
    */
   public final BooleanProperty isActiveProperty() {
@@ -56,14 +59,14 @@ public class BlackjackDealer implements Player {
   }
 
   /**
-   * Contains the logic for how the Dealer takes their turn. According to the
-   * rules of Blackjack, the dealer must hit any score below 17. Also, if
-   * {@link GameRules#DEALER_HITS_SOFT_17} is {@code true} the dealer may also
-   * have to {@link #hit()}. Otherwise, the dealer will {@link #stand()}
+   * Contains the logic for how the Dealer takes their turn. According to the rules of Blackjack,
+   * the dealer must hit any score below 17. Also, if {@link GameRules#DEALER_HITS_SOFT_17} is
+   * {@code true} the dealer may also have to {@link #hit()}. Otherwise, the dealer will {@link
+   * #stand()}
    */
   public final void takeTurn() {
     int score = hand.getScore();
-    if(isActive()) {
+    if (isActive()) {
       while (score < 18) {
         if (score == 17) {
           if (GameRules.DEALER_HITS_SOFT_17 && hand.isSoft()) {

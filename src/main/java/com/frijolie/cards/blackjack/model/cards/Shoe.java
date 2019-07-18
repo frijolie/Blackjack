@@ -74,7 +74,9 @@ public class Shoe {
     }
   }
 
-  /** Shuffles the shoe. */
+  /**
+   * Shuffles the shoe.
+   */
   private void shuffle() {
     Collections.shuffle(shoe);
   }

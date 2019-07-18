@@ -31,7 +31,9 @@ public enum Suit {
     this.symbol = symbol;
   }
 
-  /** Returns a representation of the Suit as a single letter. For example, "C" */
+  /**
+   * Returns a representation of the Suit as a single letter. For example, "C"
+   */
   @Override
   public String toString() {
     return name().charAt(0) + name().substring(1).toLowerCase();

@@ -9,7 +9,9 @@ import com.frijolie.cards.blackjack.model.game.Game;
  */
 public interface Player {
 
-  /** Allows the Player to draw a card. */
+  /**
+   * Allows the Player to draw a card.
+   */
   void hit();
 
   /**

@@ -31,7 +31,9 @@ public class BlackjackPlayer implements HumanPlayerActions {
   private BooleanProperty isActive;
   private Game game;
 
-  /** Default no-arg constructor. */
+  /**
+   * Default no-arg constructor.
+   */
   public BlackjackPlayer() {
     hand = new BlackjackHand();
     isBankrupt = new SimpleBooleanProperty(false);
@@ -40,15 +42,27 @@ public class BlackjackPlayer implements HumanPlayerActions {
     isActiveProperty().addListener((observable, oldValue, isActive) -> {
       if (!isActive) {
         hand.setHandState(HandState.INACTIVE);
+        stand();
       }
     });
     isBankruptProperty().addListener((observable, oldValue, isBankrupt) -> {
       if (isBankrupt) {
         hand.setHandState(HandState.INACTIVE);
+        stand();
       }
     });
     hand.hasBlackjackProperty().addListener((observable, oldValue, hasBlackjack) -> {
       if (hasBlackjack) {
+        stand();
+      }
+    });
+    hand.isBustProperty().addListener((observable, oldValue, isBust) -> {
+      if (isBust) {
+        stand();
+      }
+    });
+    hand.canHitProperty().addListener((observable, oldValue, canHit) -> {
+      if (!canHit) {
         stand();
       }
     });
@@ -112,7 +126,7 @@ public class BlackjackPlayer implements HumanPlayerActions {
   }
 
   /**
-   * Returns the BooleanProperty of isActive
+   * Returns the BooleanProperty of isActive.
    *
    * @return a BooleanProperty
    */
@@ -131,7 +145,7 @@ public class BlackjackPlayer implements HumanPlayerActions {
   }
 
   /**
-   * Returns the BooleanProperty of isBankrupt
+   * Returns the BooleanProperty of isBankrupt.
    *
    * @return a BooleanProperty
    */

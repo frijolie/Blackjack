@@ -63,7 +63,9 @@ public interface Hand extends Comparable<Hand> {
    */
   ObservableList<Card> getCards();
 
-  /** Returns the result of the Hand at the end of the round. For example, WIN. */
+  /**
+   * Returns the result of the Hand at the end of the round. For example, WIN.
+   */
   HandResult getHandResult();
 
   /**

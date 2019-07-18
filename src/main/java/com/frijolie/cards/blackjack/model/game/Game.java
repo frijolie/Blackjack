@@ -5,7 +5,9 @@ import com.frijolie.cards.blackjack.model.players.BlackjackDealer;
 import com.frijolie.cards.blackjack.model.players.BlackjackPlayer;
 import com.frijolie.cards.blackjack.model.players.Player;
 
-/** An interface to ensure certain behavior in all concrete game classes in the application. */
+/**
+ * An interface to ensure certain behavior in all concrete game classes in the application.
+ */
 public interface Game {
 
   /**

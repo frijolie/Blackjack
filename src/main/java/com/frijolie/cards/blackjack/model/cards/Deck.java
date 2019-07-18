@@ -21,7 +21,9 @@ class Deck {
 
   private final List<Card> deck;
 
-  /** No-arg constructor. Creates a collection and populates the deck. */
+  /**
+   * No-arg constructor. Creates a collection and populates the deck.
+   */
   public Deck() {
     deck = new ArrayList<>();
     populateDeck();
@@ -32,11 +34,9 @@ class Deck {
    */
   private void populateDeck() {
     Arrays.stream(Suit.values())
-        .forEach(
-            suit ->
-                Arrays.stream(Rank.values())
-                    .map(rank -> new BlackjackCard(rank, suit))
-                    .forEach(deck::add));
+        .forEach(suit -> Arrays.stream(Rank.values())
+            .map(rank -> new BlackjackCard(rank, suit))
+            .forEach(deck::add));
   }
 
   /**

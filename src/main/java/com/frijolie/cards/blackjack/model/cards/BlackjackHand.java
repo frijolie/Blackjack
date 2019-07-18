@@ -42,7 +42,9 @@ public class BlackjackHand implements Hand, HandPermissions {
   private HandResult handResult;
   private HandState handState;
 
-  /** No-arg constructor. Sets variable defaults. */
+  /**
+   * No-arg constructor. Sets variable defaults.
+   */
   public BlackjackHand() {
     hand = FXCollections.observableArrayList();
     score = new SimpleIntegerProperty(0);
@@ -72,7 +74,7 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Returns the IntegerProperty of score
+   * Returns the IntegerProperty of score.
    *
    * @return an IntegerProperty
    */
@@ -117,7 +119,7 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Returns the BooleanProperty of isBust
+   * Returns the BooleanProperty of isBust.
    *
    * @return a BooleanProperty
    */
@@ -140,7 +142,7 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Returns the BooleanProperty of isSoft
+   * Returns the BooleanProperty of isSoft.
    *
    * @return a BooleanProperty
    */
@@ -163,7 +165,7 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Returns the BooleanProperty of hasBlackjack
+   * Returns the BooleanProperty of hasBlackjack.
    *
    * @return a BooleanProperty
    */
@@ -224,7 +226,7 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Returns the BooleanProperty of canSplit
+   * Returns the BooleanProperty of canSplit.
    *
    * @return a BooleanProperty
    */
@@ -258,7 +260,7 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Returns the BooleanProperty of canDouble
+   * Returns the BooleanProperty of canDouble.
    *
    * @return a BooleanProperty
    */
@@ -299,7 +301,7 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Returns the BooleanProperty of canHit
+   * Returns the BooleanProperty of canHit.
    *
    * @return a BooleanProperty
    */
@@ -334,7 +336,8 @@ public class BlackjackHand implements Hand, HandPermissions {
   }
 
   /**
-   * Will trigger a call to {@link #update()} anytime a card is added to the hand
+   * Will trigger a call to {@link #update()} anytime a card is added to the hand.
+   *
    * @param c the change that was made to the collection
    */
   private void onChanged(ListChangeListener.Change c) {
@@ -347,23 +350,27 @@ public class BlackjackHand implements Hand, HandPermissions {
 
   /**
    * Will trigger the {@link HandState} to become inactive if the player isBust.
+   *
    * @param observable the object that triggered the change
-   * @param oldValue the previous value
-   * @param isBust the new value
+   * @param oldValue   the previous value
+   * @param isBust     the new value
    */
-  private void onBust(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean isBust) {
+  private void onBust(
+      ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean isBust) {
     if (isBust) {
       setHandState(HandState.INACTIVE);
     }
   }
 
   /**
-   * Will trigger the {@link HandState} to be come inactive if the player has Blackjack
-   * @param observable the object which was modified
-   * @param oldValue the previous value
+   * Will trigger the {@link HandState} to be come inactive if the player has Blackjack.
+   *
+   * @param observable   the object which was modified
+   * @param oldValue     the previous value
    * @param hasBlackjack the new value
    */
-  private void onBlackjack(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean hasBlackjack) {
+  private void onBlackjack(
+      ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean hasBlackjack) {
     if (hasBlackjack) {
       setHandState(HandState.INACTIVE);
     }

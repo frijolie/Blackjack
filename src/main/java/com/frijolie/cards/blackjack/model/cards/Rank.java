@@ -34,7 +34,7 @@ public enum Rank {
    * Constructor. Must provide a {@link #letter}, and {@link #value}
    *
    * @param letter represents the Rank as a letter. For example, 7
-   * @param value represents the Rank as a numerical value. For example, 10
+   * @param value  represents the Rank as a numerical value. For example, 10
    */
   Rank(final String letter, final int value) {
     this.letter = letter;

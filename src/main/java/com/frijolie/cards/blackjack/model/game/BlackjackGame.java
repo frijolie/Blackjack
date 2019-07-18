@@ -26,7 +26,9 @@ public class BlackjackGame implements Game {
   private BooleanProperty offerSurrender;
   private BooleanProperty gameIsOver;
 
-  /** Default no-arg constructor. Instantiates objects and sets defaults. */
+  /**
+   * Default no-arg constructor. Instantiates objects and sets defaults.
+   */
   public BlackjackGame() {
     shoe = new Shoe();
     player = new BlackjackPlayer();
@@ -142,7 +144,7 @@ public class BlackjackGame implements Game {
   }
 
   /**
-   * Returns the BooleanProperty of offerInsurance
+   * Returns the BooleanProperty of offerInsurance.
    *
    * @return a BooleanProperty
    */
@@ -157,10 +159,9 @@ public class BlackjackGame implements Game {
    * offerSurrender}.
    */
   private void calculateOfferSurrender() {
-    offerSurrender.set(
-        GameRules.OFFER_SURRENDER
-            && playerHand.hasTwoCards()
-            && playerHand.getScore() < GameRules.MAX_SCORE);
+    offerSurrender.set(GameRules.OFFER_SURRENDER
+        && playerHand.hasTwoCards()
+        && playerHand.getScore() < GameRules.MAX_SCORE);
   }
 
   /**
@@ -174,7 +175,7 @@ public class BlackjackGame implements Game {
   }
 
   /**
-   * Returns the BooleanProperty of offerSurrender
+   * Returns the BooleanProperty of offerSurrender.
    *
    * @return a BooleanProperty
    */
@@ -189,9 +190,8 @@ public class BlackjackGame implements Game {
    */
   private boolean dealerShowingAce() {
     String error =
-        String.format(
-            "Dealer top card is not an Ace. It has: %d cards, or is empty: %b",
-            dealerCards.size(), dealerCards.isEmpty());
+        String.format("Dealer top card is not an Ace. It has: %d cards, or is empty: %b",
+        dealerCards.size(), dealerCards.isEmpty());
     if (dealerCards.isEmpty() || dealerCards.size() < 2) {
       throw new IndexOutOfBoundsException(error);
     } else {
@@ -209,7 +209,7 @@ public class BlackjackGame implements Game {
   }
 
   /**
-   * Returns the BooleanProperty of gameIsOver
+   * Returns the BooleanProperty of gameIsOver.
    *
    * @return a BooleanProperty
    */
@@ -218,29 +218,29 @@ public class BlackjackGame implements Game {
   }
 
   private void configureListeners() {
-    player
-        .isActiveProperty()
-        .addListener(
-            (observable, oldValue, isActive) -> {
-              if (!isActive) {
-                if (player.getHand().isBust()) {
-                  dealer.stand();
-                } else {
-                  dealer.takeTurn();
-                }
-              }
-            });
+    player.isActiveProperty()
+        .addListener((observable, oldValue, isActive) -> {
+          if (!isActive) {
+            if (player.getHand().isBust()) {
+              dealer.stand();
+            } else {
+              dealer.takeTurn();
+            }
+          }
+        });
 
-    dealer.isActiveProperty().addListener((observabke, oldValue, isActive) -> {
-      if (!isActive) {
-        gameIsOver.set(true);
-      }
-    });
+    dealer.isActiveProperty()
+        .addListener((observable, oldValue, isActive) -> {
+          if (!isActive) {
+            gameIsOver.set(true);
+          }
+        });
 
-    gameIsOverProperty().addListener((observable, oldValue, isOver) -> {
-      if (isOver) {
-        determineWinner();
-      }
-    });
+    gameIsOverProperty().addListener(
+        (observable, oldValue, isOver) -> {
+          if (isOver) {
+            determineWinner();
+          }
+        });
   }
 }

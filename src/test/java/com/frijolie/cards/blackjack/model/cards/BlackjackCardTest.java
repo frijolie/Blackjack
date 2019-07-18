@@ -46,7 +46,7 @@ class BlackjackCardTest {
   }
 
   @Test
-  void hashCode_CardsOfSameRankDifferentSuitShouldNnotShareTheSameHashCode() {
+  void hashCode_CardsOfSameRankDifferentSuitShouldNotShareTheSameHashCode() {
     message = "Cards that have the same Rank but different Suit should not have the same hashcode";
     assertNotEquals(tenOfClubs.hashCode(), tenOfDiamonds.hashCode(), message);
   }

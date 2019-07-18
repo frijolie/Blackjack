@@ -50,16 +50,16 @@ Label {
     -fx-font-weight: bold;
 }
 
-.score {
-    -fx-font-size: 22pt;
-    -fx-font-weight: bold;
-    -fx-fill: black;
-    -fx-alignment: center;
-}
-
 #handResultLabel {
     -fx-font-size: 40pt;
     -fx-font-weight: bold;
     -fx-text-fill: limegreen;
+    -fx-alignment: center;
+}
+
+.score {
+    -fx-font-size: 22pt;
+    -fx-font-weight: bold;
+    -fx-fill: black;
     -fx-alignment: center;
 }

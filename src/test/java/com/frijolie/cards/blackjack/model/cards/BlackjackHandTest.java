@@ -49,9 +49,9 @@ class BlackjackHandTest {
   @Test
   void calculateScore_AceKing_ShouldEqual_21() {
     message =
-        String.format(
-            "Having an Ace and a 10pt card should equal 21." + " Instead the score is: %d",
-            hand.getScore());
+      String.format(
+        "Having an Ace and a 10pt card should equal 21." + " Instead the score is: %d",
+        hand.getScore());
     hand.addCard(CardRandomizer.getCard(Rank.ACE));
     hand.addCard(CardRandomizer.getCard(Rank.KING));
     assertEquals(21, hand.getScore(), message);
@@ -175,11 +175,11 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.ACE));
     hand.addCard(CardRandomizer.getCard(Rank.ACE));
     assertAll(
-        message,
-        () -> assertTrue(hand.canSplit()),
-        () -> assertTrue(GameRules.SPLITS_ALLOWED),
-        () -> assertTrue(hand.hasTwoCards()),
-        () -> assertFalse(GameRules.SPLIT_ON_VALUE));
+      message,
+      () -> assertTrue(hand.canSplit()),
+      () -> assertTrue(GameRules.SPLITS_ALLOWED),
+      () -> assertTrue(hand.hasTwoCards()),
+      () -> assertFalse(GameRules.SPLIT_ON_VALUE));
   }
 
   @Test
@@ -188,11 +188,11 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.EIGHT));
     hand.addCard(CardRandomizer.getCard(Rank.EIGHT));
     assertAll(
-        message,
-        () -> assertTrue(hand.canSplit()),
-        () -> assertTrue(GameRules.SPLITS_ALLOWED),
-        () -> assertTrue(hand.hasTwoCards()),
-        () -> assertFalse(GameRules.SPLIT_ON_VALUE));
+      message,
+      () -> assertTrue(hand.canSplit()),
+      () -> assertTrue(GameRules.SPLITS_ALLOWED),
+      () -> assertTrue(hand.hasTwoCards()),
+      () -> assertFalse(GameRules.SPLIT_ON_VALUE));
   }
 
   @Test
@@ -202,11 +202,11 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.EIGHT));
     hand.addCard(CardRandomizer.getCard(Rank.THREE));
     assertAll(
-        message,
-        () -> assertFalse(hand.canSplit()),
-        () -> assertTrue(GameRules.SPLITS_ALLOWED),
-        () -> assertFalse(GameRules.SPLIT_ON_VALUE),
-        () -> assertFalse(hand.hasTwoCards()));
+      message,
+      () -> assertFalse(hand.canSplit()),
+      () -> assertTrue(GameRules.SPLITS_ALLOWED),
+      () -> assertFalse(GameRules.SPLIT_ON_VALUE),
+      () -> assertFalse(hand.hasTwoCards()));
   }
 
   @Test
@@ -215,11 +215,11 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.EIGHT));
     hand.addCard(CardRandomizer.getCard(Rank.THREE));
     assertAll(
-        message,
-        () -> assertFalse(hand.canSplit()),
-        () -> assertTrue(GameRules.SPLITS_ALLOWED),
-        () -> assertFalse(GameRules.SPLIT_ON_VALUE),
-        () -> assertTrue(hand.hasTwoCards()));
+      message,
+      () -> assertFalse(hand.canSplit()),
+      () -> assertTrue(GameRules.SPLITS_ALLOWED),
+      () -> assertFalse(GameRules.SPLIT_ON_VALUE),
+      () -> assertTrue(hand.hasTwoCards()));
   }
 
   @Test
@@ -228,13 +228,13 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.TEN));
     hand.addCard(CardRandomizer.getCard(Rank.KING));
     String message =
-        "SplitOnValue = true, has two cards of same value." + " canSplit should be true";
+      "SplitOnValue = true, has two cards of same value." + " canSplit should be true";
     assertAll(
-        message,
-        () -> assertTrue(GameRules.SPLIT_ON_VALUE),
-        () -> assertTrue(GameRules.SPLITS_ALLOWED),
-        () -> assertTrue(hand.hasTwoCards()),
-        () -> assertTrue(hand.canSplit()));
+      message,
+      () -> assertTrue(GameRules.SPLIT_ON_VALUE),
+      () -> assertTrue(GameRules.SPLITS_ALLOWED),
+      () -> assertTrue(hand.hasTwoCards()),
+      () -> assertTrue(hand.canSplit()));
   }
 
   @Test
@@ -244,11 +244,11 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.ACE));
     String message = "Hand has pair. splits allowed is false. canSplit = false";
     assertAll(
-        message,
-        () -> assertFalse(hand.canSplit()),
-        () -> assertFalse(GameRules.SPLITS_ALLOWED),
-        () -> assertTrue(hand.hasTwoCards()),
-        () -> assertFalse(GameRules.SPLIT_ON_VALUE));
+      message,
+      () -> assertFalse(hand.canSplit()),
+      () -> assertFalse(GameRules.SPLITS_ALLOWED),
+      () -> assertTrue(hand.hasTwoCards()),
+      () -> assertFalse(GameRules.SPLIT_ON_VALUE));
   }
 
   @Test
@@ -257,10 +257,10 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.FIVE));
     hand.addCard(CardRandomizer.getCard(Rank.FOUR));
     assertAll(
-        message,
-        () -> assertTrue(hand.canDouble()),
-        () -> assertTrue(GameRules.DOUBLE_DOWN_ALLOWED),
-        () -> assertTrue(hand.hasTwoCards()));
+      message,
+      () -> assertTrue(hand.canDouble()),
+      () -> assertTrue(GameRules.DOUBLE_DOWN_ALLOWED),
+      () -> assertTrue(hand.hasTwoCards()));
   }
 
   @Test
@@ -269,10 +269,10 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.THREE));
     hand.addCard(CardRandomizer.getCard(Rank.THREE));
     assertAll(
-        message,
-        () -> assertTrue(GameRules.DOUBLE_DOWN_ALLOWED),
-        () -> assertTrue(hand.hasTwoCards()),
-        () -> assertFalse(hand.canDouble()));
+      message,
+      () -> assertTrue(GameRules.DOUBLE_DOWN_ALLOWED),
+      () -> assertTrue(hand.hasTwoCards()),
+      () -> assertFalse(hand.canDouble()));
   }
 
   @Test
@@ -282,10 +282,10 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.THREE));
     hand.addCard(CardRandomizer.getCard(Rank.FIVE));
     assertAll(
-        message,
-        () -> assertTrue(GameRules.DOUBLE_DOWN_ALLOWED),
-        () -> assertFalse(hand.hasTwoCards()),
-        () -> assertFalse(hand.canDouble()));
+      message,
+      () -> assertTrue(GameRules.DOUBLE_DOWN_ALLOWED),
+      () -> assertFalse(hand.hasTwoCards()),
+      () -> assertFalse(hand.canDouble()));
   }
 
   @Test
@@ -295,10 +295,10 @@ class BlackjackHandTest {
     hand.addCard(CardRandomizer.getCard(Rank.FOUR));
     String message = "DoubleDownAllowed = false, can double should be false";
     assertAll(
-        message,
-        () -> assertTrue(hand.hasTwoCards()),
-        () -> assertFalse(GameRules.DOUBLE_DOWN_ALLOWED),
-        () -> assertFalse(hand.canDouble()));
+      message,
+      () -> assertTrue(hand.hasTwoCards()),
+      () -> assertFalse(GameRules.DOUBLE_DOWN_ALLOWED),
+      () -> assertFalse(hand.canDouble()));
   }
 
   @Test

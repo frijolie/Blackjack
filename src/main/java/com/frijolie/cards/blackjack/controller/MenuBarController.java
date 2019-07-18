@@ -1,7 +1,6 @@
 package com.frijolie.cards.blackjack.controller;
 
 import com.frijolie.cards.blackjack.io.GameIO;
-import com.frijolie.cards.blackjack.model.game.BlackjackGame;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -13,32 +12,45 @@ import javafx.scene.input.KeyCombination;
 
 public class MenuBarController {
 
-  @FXML private MenuItem newGameMenuItem;
+  @FXML
+  private MenuItem newGameMenuItem;
 
-  @FXML private MenuItem quitMenuItem;
+  @FXML
+  private MenuItem quitMenuItem;
 
-  @FXML private MenuItem preferencesMenuItem;
+  @FXML
+  private MenuItem preferencesMenuItem;
 
-  @FXML private MenuItem rulesMenuItem;
+  @FXML
+  private MenuItem rulesMenuItem;
 
-  @FXML private MenuItem aboutMenuItem;
+  @FXML
+  private MenuItem aboutMenuItem;
 
-  @FXML private MenuItem hintMenuItem;
+  @FXML
+  private MenuItem hintMenuItem;
 
   private MenuBar menuBar;
+  private SuperController superController;
 
-  /** No-arg constructor. Assembles an FXML file into a usable JavaFX component. */
-  public MenuBarController() {
+  /**
+   * No-arg constructor. Assembles an FXML file into a usable JavaFX component.
+   */
+  MenuBarController(SuperController superController) {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainMenu.fxml"));
     loader.setController(this);
+    this.superController = superController;
     try {
       menuBar = loader.load();
     } catch (Exception e) {
       System.err.println("MainMenu.fxml could not be loaded");
+      e.printStackTrace();
     }
   }
 
-  /** Configures things after the FXML has been loaded. */
+  /**
+   * Configures things after the FXML has been loaded.
+   */
   @FXML
   public void initialize() {
     setMenuItemIcons();
@@ -51,28 +63,26 @@ public class MenuBarController {
    *
    * @return a MenuBar component
    */
-  public final MenuBar getMenuBar() {
+  final MenuBar getMenuBar() {
     return menuBar;
   }
 
-  /**
-   * Injects a reference to the model class.
-   *
-   * @param game the model class
-   */
-  public void injectModel(final BlackjackGame game) {}
-
   private void setMenuEventHandlers() {
     quitMenuItem.setOnAction(e -> Platform.exit());
+    hintMenuItem.setOnAction(e -> displayHintDialog());
   }
 
-  /** Configures the accelerators for menus and menu items. */
+  /**
+   * Configures the accelerators for menus and menu items.
+   */
   private void setAccelerators() {
     aboutMenuItem.setAccelerator(KeyCombination.keyCombination("F1"));
     rulesMenuItem.setAccelerator(KeyCombination.keyCombination("F2"));
   }
 
-  /** Adds a graphic next to each menuItem. */
+  /**
+   * Adds a graphic next to each menuItem.
+   */
   private void setMenuItemIcons() {
     ImageView quitMenuItemImage = new ImageView(GameIO.getImage("/images/menu/exit.png"));
     quitMenuItemImage.setFitHeight(25);
@@ -103,5 +113,9 @@ public class MenuBarController {
     hintItemImage.setFitHeight(25);
     hintItemImage.setFitWidth(25);
     hintMenuItem.setGraphic(hintItemImage);
+  }
+
+  private void displayHintDialog() {
+    superController.displayHint();
   }
 }
